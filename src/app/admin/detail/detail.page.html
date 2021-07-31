@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button 
+       defaultHref="/"
+       text="Contactos"
+       color="primary"
+       mode="ios">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-button [routerLink]="['/admin/edit',contactId]" fill="clear" slot="end" >
+      Editar
+     </ion-button>
+
+
+
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row >
+    <ion-col size="12" >
+      <ion-avatar class="img-avatar item-avatar" size="12">
+        <img class="ion-justify-content-center" src="/assets/avatar.png">
+      </ion-avatar>
+    </ion-col>
+    <ion-col size="12" color="primary">
+      <h2 class="ion-text-center">{{contact.firstName}} {{contact.lastName}}</h2>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-padding">
+
+    <ion-col size="6" >
+      <ion-button expand="block" fill="outline" >   
+            <ion-icon name="chatbubble"></ion-icon>         
+            <p>mensaje</p>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" >
+      <ion-button expand="block" fill="outline" >   
+            <ion-icon name="call"></ion-icon>     
+            <p>llamar</p>
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+
+  <ion-row class="ion-padding">
+    <ion-col size="12">
+      <ion-list>
+        <ion-item>
+          <ion-label>{{contact.phone}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

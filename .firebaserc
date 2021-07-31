@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "contactosapp-558de": {
+      "hosting": {
+        "app": [
+          "contactosapp-558de"
+        ]
+      }
+    }
+  }
+}

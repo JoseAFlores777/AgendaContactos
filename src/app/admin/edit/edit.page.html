@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button 
+       defaultHref="/"
+       text="Cancelar"
+       color="primary"
+       mode="ios"
+       icon="null">
+      </ion-back-button>
+    </ion-buttons>
+
+
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <ion-row >
+      <ion-col size="12" >
+        <ion-avatar class="img-avatar item-avatar" size="12">
+          <img class="ion-justify-content-center" src="/assets/avatar.png">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button  expand="block" fill="clear">
+          <p class="ion-text-center">Edit image</p>
+         </ion-button>
+      </ion-col>
+      <ion-col size="12" color="primary">
+        <h2 class="ion-text-center"></h2>
+      </ion-col>
+    </ion-row>
+
+        <ion-item>
+          <ion-label>First Name: </ion-label>
+          <ion-input placeholder="First Name" (ionChange)="onChange()" [(ngModel)]="contact.firstName" type="text" clearInput="true" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Last Name: </ion-label>
+          <ion-input placeholder="Last Name" (ionChange)="onChange()" [(ngModel)]="contact.lastName" type="text" clearInput="true" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Phone: </ion-label>
+          <ion-input placeholder="phone number" (ionChange)="onChange()" [(ngModel)]="contact.phone" type="text" clearInput="true"></ion-input>
+        </ion-item>
+
+        <ion-row style="margin-top: 10px;">
+          <ion-col>
+            <ion-button type="submit" (click)="saveContact()" expand="block" ng-disabled="cambios">
+              Save
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+
+
+
+
+
+</ion-content>
+
+<ion-footer>
+  
+    <ion-col size="12">
+      <ion-button (click)="removeContact()"  expand="block" fill="clear">
+        <p color="danger">Delete</p>
+       </ion-button>
+    </ion-col>
+  
+</ion-footer>
