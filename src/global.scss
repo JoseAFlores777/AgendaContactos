@@ -24,3 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.mb-label{
+    margin-bottom: 10px !important;
+}
+
+.img-avatar{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px !important;
+}
+
+.item-avatar  {     
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 100px !important;  //any size
+    max-height: 100px !important; //any size 
+    }
