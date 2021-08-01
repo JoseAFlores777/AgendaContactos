@@ -13,8 +13,8 @@ import { map, take } from 'rxjs/operators';
 })
 export class ContactsService {
 
-  private contactsCollection: AngularFirestoreCollection<Contact>;
-  private contacts: Observable<Contact[]>;
+  public contactsCollection: AngularFirestoreCollection<Contact>;
+  public contacts: Observable<Contact[]>;
   private currentUser: Observable<User>;
   public currentUserId: String;
   
@@ -29,6 +29,7 @@ export class ContactsService {
 
     console.log("id",this.currentUserId);
 
+    
     this.contactsCollection = this.db.collection<Contact>(`users/${this.currentUserId}/contacts`);
     this.contacts = this.contactsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -42,6 +43,7 @@ export class ContactsService {
   }
   
   getContacts() {
+    this.loadContacts()
     return this.contacts;
   }
   

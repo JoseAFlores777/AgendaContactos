@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { ContactsService } from '../services/contacts.service';
+import { Contact } from '../shared/contact.inteface';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,19 @@ import { AuthService } from '../services/auth.service';
 export class LoginPage implements OnInit {
 
   constructor(private authSvc: AuthService, private router: Router
-  ,public alertController: AlertController) { }
+  ,public alertController: AlertController, private contactSvc:ContactsService) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave')
+    
+  }
+
+  ionViewWillEnter() {
+    this.contactSvc.contactsCollection = null;
+    this.contactSvc.contacts = null;
   }
 
  async onLogin(email, password) {

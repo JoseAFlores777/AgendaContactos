@@ -25,8 +25,11 @@ export class AdminPage implements OnInit {
     })
   }
 
+
+
   logout() {
     this.authSvc.logout();
+    this.contacts=[]
     this.router.navigate(['/login']);
   }
 

@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(user => {
         console.log('user->', user)
-        this.contactSvc.loadContacts()
+        // this.contactSvc.loadContacts()
         
         if (user) {
           return true
