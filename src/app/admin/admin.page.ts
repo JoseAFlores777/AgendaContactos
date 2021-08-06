@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ContactsService } from '../services/contacts.service';
 import { Contact } from '../shared/contact.inteface';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
@@ -14,7 +15,8 @@ export class AdminPage implements OnInit {
   contacts: Contact[];
   textoBuscar: string = '';
 
-  constructor(private authSvc: AuthService, private contacSvc: ContactsService, private router: Router) {
+  constructor(private authSvc: AuthService, private contacSvc: ContactsService,
+              private router: Router) {
     
   }
 

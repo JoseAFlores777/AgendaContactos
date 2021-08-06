@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore,AngularFirestoreDocument } from "@angular/fire/firestore";
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
 
 
 @Injectable({
@@ -15,7 +16,8 @@ export class AuthService {
   public user$: Observable<User>;
   public currentUserId: string;
 
-  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore,
+               public alertController: AlertController) {
    
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
@@ -39,6 +41,7 @@ export class AuthService {
       
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
     }
   }
   
@@ -53,6 +56,7 @@ export class AuthService {
       
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
     }
    }
   
@@ -66,6 +70,7 @@ export class AuthService {
 
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
     }
    }
   
@@ -75,13 +80,30 @@ export class AuthService {
 
       const { user } = await this.afAuth.signInWithEmailAndPassword(email, password);
       this.updateUserData(user);
-      await this.sendVerificationEmail();
+      //await this.sendVerificationEmail();
       return user;
       
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
+      
+      
       
     }
+  }
+
+  async presentAlert(msj:string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      message: msj,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
   async sendVerificationEmail(): Promise<void>{
@@ -91,6 +113,7 @@ export class AuthService {
       
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
     }
   }
 
@@ -110,6 +133,7 @@ export class AuthService {
       
     } catch (error) {
       console.log('Error ->', error);
+      this.presentAlert(error.message)
     }
   }
 
